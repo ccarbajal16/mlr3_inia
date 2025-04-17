@@ -1,0 +1,115 @@
+---
+title: "Technical Documentation"
+subtitle: "Technical details about the MLR3 Spatial Prediction Tool"
+toc: true
+---
+
+This document provides technical details about the MLR3 Spatial Prediction Tool, which is built on the [mlr3 framework](https://mlr3.mlr-org.com/). For comprehensive documentation on mlr3, please refer to the [mlr3book](https://mlr3book.mlr-org.com/), which is the principal reference for understanding the underlying methodology used in this application.
+
+## Application Architecture
+
+The application follows a standard Shiny architecture with UI and server components defined in a single `app.R` file. The application is structured as follows:
+
+### Libraries and Dependencies
+
+The application uses several R packages:
+
+- **Shiny Framework**: shiny, shinythemes
+- **Spatial Data Handling**: terra, sf
+- **Machine Learning**: ranger, gbm
+- **Data Manipulation**: data.table
+- **MLR3 Framework**: mlr3, mlr3learners, mlr3spatiotempcv, mlr3pipelines, mlr3extralearners, mlr3tuning
+- **Visualization**: ggplot2, tidyterra, viridis
+
+### UI Structure
+
+The UI is built using a fluid page layout with a custom theme based on shinytheme("cerulean") with INIA green color customizations. The main components are:
+
+1. **Header**: Custom header with logo and application title
+2. **Sidebar Panel**: Contains input controls organized in panels:
+   - Data Upload (raster files and CSV)
+   - Model Configuration (model type, train/test split)
+   - Hyperparameter Tuning (optional)
+   - Prediction Settings (resolution, train button)
+3. **Main Panel**: Contains tabbed output sections:
+   - Data Preview
+   - Model Training & Results
+   - Feature Importance
+   - Model Validation
+   - Raster Prediction
+
+### Server Logic
+
+The server logic is organized into several reactive components:
+
+#### Data Loading and Preparation
+
+- `csv_data()`: Loads CSV data using data.table's fread
+- `raster_stack_list()`: Loads individual raster files using terra::rast
+- `raster_stack()`: Combines rasters into a SpatRaster
+- Dynamic UI generation for column selection
+- `prepared_data()`: Combines CSV and raster data, extracts values at point locations
+
+#### Model Training
+
+- `model_results()`: Event-reactive function triggered by the train button
+- Creates mlr3 TaskRegr object
+- Defines learner with preprocessing pipeline
+- Implements optional hyperparameter tuning
+- Performs model evaluation using holdout and cross-validation
+- Extracts feature importance
+
+#### Results Visualization
+
+- Performance metrics display
+- Predicted vs. observed plots
+- Feature importance visualization
+- Cross-validation results
+
+#### Prediction Generation
+
+- Raster prediction triggered by predict button
+- Handles large rasters by processing in chunks
+- Applies optional masking
+- Generates downloadable prediction raster
+
+## Technical Implementation Details
+
+### Data Processing Workflow
+
+1. User uploads CSV with response variable and coordinates
+2. User uploads predictor raster files
+3. Application extracts raster values at point locations
+4. Combined data is prepared for model training
+5. Data is split into training and test sets
+
+### Machine Learning Implementation
+
+- Uses mlr3 framework for model training and evaluation
+- Implements a preprocessing pipeline with scaling
+- Supports Random Forest (ranger) and Gradient Boosting (GBM) models
+- Optional hyperparameter tuning with random search
+- Cross-validation for model validation
+
+### Spatial Prediction
+
+- Prediction on raster data with adjustable resolution
+- Memory-efficient processing for large rasters using chunking
+- Optional masking with vector data
+- Visualization with ggplot2 and tidyterra
+
+### Performance Considerations
+
+- Uses data.table for efficient data manipulation
+- Implements chunking for large raster processing
+- Provides progress notifications for long-running operations
+
+## Extension Points
+
+The application could be extended in the following ways:
+
+1. **Additional Models**: Support for more mlr3 learners
+2. **Spatial Cross-Validation**: Implementation of spatial CV using mlr3spatiotempcv
+3. **Advanced Tuning**: More sophisticated hyperparameter tuning strategies
+4. **Ensemble Models**: Support for model stacking or ensembling
+5. **Interactive Maps**: Integration with leaflet for interactive map visualization

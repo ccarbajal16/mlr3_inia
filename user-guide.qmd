@@ -1,0 +1,169 @@
+---
+title: "User Guide"
+subtitle: "How to use the MLR3 Spatial Prediction Tool"
+toc: true
+---
+
+This guide will help you navigate and use the MLR3 Spatial Prediction Tool effectively.
+
+## Getting Started
+
+### Data Requirements
+
+#### Raster Files
+- Format: GeoTIFF (.tif)
+- All rasters should have the same:
+  - Coordinate Reference System (CRS)
+  - Extent
+  - Resolution
+- Each raster represents one predictor variable
+
+#### CSV File
+- Must contain:
+  - Coordinates (X/Y or Longitude/Latitude)
+  - Response variable (the value you want to predict)
+- Coordinates should be in the same CRS as the raster files
+- No missing values in coordinate or response columns
+
+### Example Data Format
+
+**CSV File:**
+```
+X,Y,Yield,Field_ID
+-56.78901,34.56789,4.5,1
+-56.78902,34.56788,5.2,1
+-56.78903,34.56787,4.8,1
+...
+```
+
+## Step-by-Step Guide
+
+### 1. Upload Data
+
+1. Click "Browse..." next to "Upload Predictor Rasters (.tif)"
+   - Select one or more GeoTIFF files
+   - You can select multiple files at once
+
+2. Click "Browse..." next to "Upload Response & Coordinates (.csv)"
+   - Select your CSV file with response data and coordinates
+
+3. Select the appropriate columns:
+   - X Coordinate Column (e.g., "X", "Longitude")
+   - Y Coordinate Column (e.g., "Y", "Latitude")
+   - Response Variable Column (the variable you want to predict)
+
+### 2. Configure Model
+
+1. Select a model type:
+   - **Random Forest (Ranger)**: Good general-purpose model, handles non-linear relationships
+   - **Gradient Boosting (GBM)**: Often provides high accuracy, may require more tuning
+
+2. Set the training data proportion:
+   - Higher values (e.g., 0.8) use more data for training
+   - Lower values (e.g., 0.6) reserve more data for testing
+   - Recommended: 0.7-0.8
+
+3. (Optional) Enable Hyperparameter Tuning:
+   - Check "Enable Hyperparameter Tuning"
+   - Set the number of tuning evaluations (more evaluations = better results but slower)
+   - Tuning uses random search with 3-fold cross-validation
+
+### 3. Set Prediction Settings
+
+1. Adjust the raster resolution:
+   - Lower values = higher resolution, more detailed but slower
+   - Higher values = lower resolution, less detailed but faster
+   - Choose based on your analysis needs and computational resources
+
+2. Click "Train Model" to start the model training process
+
+### 4. Explore Results
+
+After model training completes, explore the results in the tabs:
+
+#### Data Preview
+- View the first few rows of your CSV data
+- See a list of loaded raster files
+- View a map of your response variable
+
+#### Model Training & Results
+- View performance metrics (RMSE, R², MAE)
+- See a plot of predicted vs. observed values
+
+#### Feature Importance
+- View a bar chart of variable importance
+- Identify which predictors have the strongest influence on your model
+
+#### Model Validation
+- View cross-validation results
+- Assess model stability across different data subsets
+
+### 5. Generate Prediction
+
+1. Go to the "Raster Prediction" tab
+2. (Optional) Apply a mask:
+   - Check "Apply Mask"
+   - Upload a mask file (.geojson or .shp)
+   - This restricts prediction to the area within the mask
+
+3. Click "Generate Prediction" to create the prediction raster
+4. View the prediction map
+5. Click "Download Prediction" to save the result as a GeoTIFF file
+
+## Tips and Best Practices
+
+### For Better Results
+
+1. **Data Quality**:
+   - Remove outliers from your response data
+   - Ensure coordinates are accurate
+   - Use predictors that are likely to influence your response variable
+
+2. **Model Selection**:
+   - Try both model types to see which performs better
+   - Random Forest is often more robust with less tuning
+   - GBM may achieve higher accuracy with proper tuning
+
+3. **Hyperparameter Tuning**:
+   - Always enable tuning for final models
+   - Use at least 10 evaluations for better results
+   - Be patient - tuning takes time but improves results
+
+4. **Validation**:
+   - Check the cross-validation results to ensure model stability
+   - Look for consistent performance across folds
+   - Large variations between folds may indicate overfitting
+
+### Troubleshooting
+
+1. **Slow Performance**:
+   - Reduce raster resolution
+   - Use fewer predictor rasters
+   - Disable tuning for initial tests
+
+2. **Error Messages**:
+   - "Error loading raster(s)": Check that raster files are valid GeoTIFFs
+   - "Error loading CSV": Ensure CSV format is correct
+   - "Coordinate columns must be numeric": Check for non-numeric values in coordinate columns
+
+3. **Poor Model Performance**:
+   - Try different predictors
+   - Enable hyperparameter tuning
+   - Check for outliers in your data
+   - Consider data transformations (e.g., log transform skewed variables)
+
+## Advanced Usage
+
+### Custom Mask Files
+
+You can create custom mask files to restrict predictions to specific areas:
+- Use GIS software (QGIS, ArcGIS) to create polygon shapefiles
+- Save as .geojson or .shp format
+- Upload as mask when generating predictions
+
+### Resolution Considerations
+
+- Match the prediction resolution to your analysis needs:
+  - Finer resolution (10-30m) for detailed local analysis
+  - Coarser resolution (50-200m) for regional analysis or when using many predictors
+- Higher resolution increases processing time and file size

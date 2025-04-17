@@ -1,0 +1,80 @@
+---
+title: "MLR3 App Project"
+subtitle: "A Shiny application for machine learning with R using the mlr3 framework"
+page-layout: full
+toc: true
+---
+
+## Project Overview
+
+This is a Shiny application for machine learning with R using the mlr3 framework. The app allows users to upload spatial data (rasters and CSV files), train machine learning models, and generate spatial predictions.
+
+:::{.feature-box}
+### Key Features
+
+- Upload and process spatial data (rasters and CSV files)
+- Train machine learning models (Random Forest, Gradient Boosting)
+- Configure model parameters and hyperparameter tuning
+- Generate spatial predictions with adjustable resolution
+- Visualize results with interactive plots and maps
+:::
+
+## Project Structure
+
+### Main Files
+
+- **app.R** - The main Shiny application file containing both UI and server logic
+
+### Directories
+
+- **www/** - Contains static assets for the web application
+  - INIA_LOGO.png - Logo image used in the app header
+- **docs/** - Contains documentation about the app
+  - technical_documentation.md
+  - user_guide.md
+  - project_index.md
+
+## Application Features
+
+### Data Input
+
+- Upload predictor raster files (.tif)
+- Upload response & coordinates data (.csv)
+- Select coordinate columns and response variable
+
+### Model Configuration
+
+- Choose between Random Forest (Ranger) and Gradient Boosting (GBM) models
+- Set training/test split ratio
+- Optional hyperparameter tuning
+
+### Prediction Settings
+
+- Adjust raster resolution for predictions
+- Apply optional mask for predictions
+- Download prediction results
+
+### Results Visualization
+
+- Data preview with map of response variable
+- Model performance metrics
+- Predicted vs. observed plots
+- Feature importance visualization
+- Cross-validation results
+- Raster prediction maps
+
+## Dependencies
+
+The application uses the following R packages:
+
+- shiny, shinythemes - For the web application framework
+- terra, sf - For spatial data handling
+- ranger, gbm - For machine learning algorithms
+- data.table - For efficient data manipulation
+- mlr3, mlr3learners, mlr3spatiotempcv, mlr3pipelines, mlr3extralearners, mlr3tuning - For machine learning framework
+- paradox - For hyperparameter space definition
+- ggplot2, tidyterra, viridis - For visualization
+
+## UI Design
+
+The application uses a custom theme with INIA green colors and a responsive layout with sidebar and main panel sections.

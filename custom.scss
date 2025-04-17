@@ -1,0 +1,35 @@
+/*-- scss:defaults --*/
+$primary: #2C8848;  // INIA green color
+$link-color: #2C8848;
+$navbar-bg: #2C8848;
+$navbar-fg: #FFFFFF;
+$navbar-hl: #FFFFFF;
+
+/*-- scss:rules --*/
+.navbar {
+  border-bottom: 1px solid darken($primary, 10%);
+}
+
+.sidebar-title {
+  color: $primary;
+}
+
+.sidebar-item-container .active {
+  font-weight: bold;
+  color: $primary !important;
+}
+
+.sidebar-item-container .active::before {
+  content: "→ ";
+  color: $primary;
+}
+
+.btn-primary {
+  background-color: $primary;
+  border-color: darken($primary, 10%);
+}
+
+.btn-primary:hover {
+  background-color: darken($primary, 10%);
+  border-color: darken($primary, 20%);
+}

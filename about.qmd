@@ -1,0 +1,34 @@
+---
+title: "About"
+subtitle: "About the MLR3 App Project"
+---
+
+## About the Project
+
+The MLR3 App is a Shiny application designed to make spatial machine learning accessible to users without extensive programming knowledge. It leverages the powerful [mlr3](https://mlr3.mlr-org.com/) machine learning framework for R, combined with spatial data handling capabilities.
+
+## Purpose
+
+This application was developed to:
+
+- Simplify the process of applying machine learning to spatial data
+- Provide an intuitive interface for model training and evaluation
+- Enable spatial prediction generation without writing code
+- Visualize results in an informative and interactive way
+
+## Development
+
+The application was developed using R and Shiny, with a focus on:
+
+- User-friendly interface
+- Efficient handling of spatial data
+- Robust machine learning implementation
+- Clear visualization of results
+
+## Documentation
+
+This documentation website was created using [Quarto](https://quarto.org/), a scientific and technical publishing system. The source code for this documentation is available in the project repository.
+
+## Contact
+
+For questions, suggestions, or bug reports, please open an issue on the GitHub repository or contact the project maintainers.

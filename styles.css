@@ -1,0 +1,53 @@
+/* css styles */
+
+/* General styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header styles */
+h1, h2, h3, h4, h5, h6 {
+  color: #2C8848;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Code blocks */
+pre {
+  border-left: 4px solid #2C8848;
+  padding-left: 1rem;
+  background-color: #f8f9fa;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+}
+
+table th {
+  background-color: #e9f5ef;
+  border-bottom: 2px solid #2C8848;
+}
+
+table td, table th {
+  padding: 0.5rem;
+  border: 1px solid #dee2e6;
+}
+
+/* Feature boxes */
+.feature-box {
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f8f9fa;
+}
+
+.feature-box h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 0.5rem;
+}

@@ -1,0 +1,46 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "MLR3 App Documentation"
+  favicon: "www/INIA_LOGO.png"
+  navbar:
+    logo: "www/INIA_LOGO.png"
+    background: "#2C8848"  # INIA green color
+    foreground: "#FFFFFF"  # White text
+    left:
+      - href: index.qmd
+        text: Home
+      - href: user-guide.qmd
+        text: User Guide
+      - href: technical-docs.qmd
+        text: Technical Documentation
+      - href: about.qmd
+        text: About
+
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Documentation"
+        contents:
+          - index.qmd
+          - user-guide.qmd
+          - technical-docs.qmd
+          - about.qmd
+
+  page-footer:
+    left: "Copyright © 2025 MLR3 App Project"
+    right:
+      - icon: github
+        href: https://github.com/ccarbajal16/mlr3_inia
+
+format:
+  html:
+    theme:
+      light: [cosmo, custom.scss]
+    css: styles.css
+    toc: true
+    code-copy: true
+    code-tools: true
