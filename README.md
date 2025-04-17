@@ -89,9 +89,9 @@ shiny::runApp()
 
 ## Documentation
 
-For more detailed information, see the documentation website (when deployed):
+For more detailed information, see the documentation website:
 
-- **[Documentation Website](https://yourusername.github.io/mlr3_app/)** - Complete documentation with user guide and technical details
+- **[Documentation Website](https://ccarbajal16.github.io/mlr3_inia/)** - Complete documentation with user guide and technical details
 
 Or view the documentation files directly:
 

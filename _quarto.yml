@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: _site
+  resources:
+    - CNAME
 
 website:
   title: "MLR3 App Documentation"
@@ -29,6 +31,7 @@ website:
           - user-guide.qmd
           - technical-docs.qmd
           - about.qmd
+          - 404.qmd
 
   page-footer:
     left: "Copyright © 2025 MLR3 App Project"
