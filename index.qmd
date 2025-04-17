@@ -29,10 +29,7 @@ This is a Shiny application for machine learning with R using the mlr3 framework
 
 - **www/** - Contains static assets for the web application
   - INIA_LOGO.png - Logo image used in the app header
-- **docs/** - Contains documentation about the app
-  - technical_documentation.md
-  - user_guide.md
-  - project_index.md
+
 
 ## Application Features
 

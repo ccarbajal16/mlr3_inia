@@ -103,7 +103,7 @@ After model training completes, explore the results in the tabs:
 1. Go to the "Raster Prediction" tab
 2. (Optional) Apply a mask:
    - Check "Apply Mask"
-   - Upload a mask file (.geojson or .shp)
+   - Upload a mask file (.geojson or .gpkg)
    - This restricts prediction to the area within the mask
 
 3. Click "Generate Prediction" to create the prediction raster
@@ -158,7 +158,7 @@ After model training completes, explore the results in the tabs:
 
 You can create custom mask files to restrict predictions to specific areas:
 - Use GIS software (QGIS, ArcGIS) to create polygon shapefiles
-- Save as .geojson or .shp format
+- Save as .geojson or .gpkg format
 - Upload as mask when generating predictions
 
 ### Resolution Considerations
