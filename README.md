@@ -93,12 +93,6 @@ For more detailed information, see the documentation website:
 
 - **[Documentation Website](https://ccarbajal16.github.io/mlr3_inia/)** - Complete documentation with user guide and technical details
 
-Or view the documentation files directly:
-
-- [Technical Documentation](docs/technical_documentation.md) - Detailed technical information
-- [User Guide](docs/user_guide.md) - Instructions for using the application
-- [Project Index](docs/project_index.md) - Overview of project structure
-
 The documentation website is built using [Quarto](https://quarto.org/) and deployed to GitHub Pages.
 
 This application is built on the [mlr3 framework](https://mlr3.mlr-org.com/). For comprehensive documentation on mlr3, please refer to the [mlr3book](https://mlr3book.mlr-org.com/), which is the principal reference for understanding the underlying methodology.
@@ -107,4 +101,4 @@ This application is built on the [mlr3 framework](https://mlr3.mlr-org.com/). Fo
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Acknowledgments
+
