@@ -250,8 +250,8 @@ ui <- fluidPage(
                                      ),
                                      conditionalPanel(
                                        condition = "input.mask_prediction == true",
-                                       fileInput("mask_file", "Upload Mask File (.geojson, .shp)",
-                                                 accept = c(".geojson", ".shp", ".dbf", ".prj", ".shx"))
+                                       fileInput("mask_file", "Upload Mask File (.geojson, .gpkg)",
+                                                 accept = c(".geojson", ".gpkg"))
                                      ),
                                      div(style = "margin-top: 20px; text-align: center;",
                                          actionButton("predict_button", "Generate Prediction",
